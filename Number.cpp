@@ -5,7 +5,7 @@
 // Login   <toumi_m@epitech.net>
 // 
 // Started on  Sat May 31 16:12:59 2008 majdi toumi
-// Last update Sat May 31 17:45:20 2008 majdi toumi
+// Last update Sat May 31 17:46:14 2008 majdi toumi
 //
 
 #include <iostream>
@@ -16,14 +16,14 @@
 template<typename T>
 Number<T>::Number(const std::string& t, const T& v) :  _type(t), _value(v)
 {
-  if (typeid(T) == typeid(short int))
-    _priority = INT16;
-  else if (typeid(T) == typeid(long int))
-    _priority = INT32;
-  else if (typeid(T) == typeid(long int))
-    _priority = FLOAT;
-  else if (typeid(T) == typeid(long int))
-    _priority = DOUBLE;
+//   if (typeid(T) == typeid(short int))
+//     _priority = INT16;
+//   else if (typeid(T) == typeid(long int))
+//     _priority = INT32;
+//   else if (typeid(T) == typeid(long int))
+//     _priority = FLOAT;
+//   else if (typeid(T) == typeid(long int))
+//     _priority = DOUBLE;
 }
 
 template<typename T>
