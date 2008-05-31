@@ -5,7 +5,7 @@
 // Login   <toumi_m@epitech.net>
 // 
 // Started on  Sat May 31 16:12:59 2008 majdi toumi
-// Last update Sat May 31 16:23:11 2008 majdi toumi
+// Last update Sat May 31 16:26:39 2008 caner candan
 //
 
 #include <iostream>
@@ -96,4 +96,7 @@ IObject*	Number<T>::Divide(const IOperand& object) const
   return (0);
 }
 
-
+template class	Number<short int>;
+template class	Number<long int>;
+template class	Number<float>;
+template class	Number<double>;

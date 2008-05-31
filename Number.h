@@ -5,7 +5,7 @@
 // Login   <toumi_m@epitech.net>
 // 
 // Started on  Sat May 31 14:22:02 2008 majdi toumi
-// Last update Sat May 31 16:16:57 2008 majdi toumi
+// Last update Sat May 31 16:36:23 2008 caner candan
 //
 
 #ifndef __NUMBER_H__
@@ -37,7 +37,7 @@ public:
   IObject*	Multiply(const IOperand& object) const;
   IObject*	Divide(const IOperand& object) const;
 
-private:
+  //private:
   std::string	_type;
   T		_value;
 };
