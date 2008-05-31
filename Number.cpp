@@ -5,7 +5,7 @@
 // Login   <toumi_m@epitech.net>
 // 
 // Started on  Sat May 31 16:12:59 2008 majdi toumi
-// Last update Sat May 31 17:41:02 2008 caner candan
+// Last update Sat May 31 17:45:20 2008 majdi toumi
 //
 
 #include <iostream>
@@ -16,6 +16,14 @@
 template<typename T>
 Number<T>::Number(const std::string& t, const T& v) :  _type(t), _value(v)
 {
+  if (typeid(T) == typeid(short int))
+    _priority = INT16;
+  else if (typeid(T) == typeid(long int))
+    _priority = INT32;
+  else if (typeid(T) == typeid(long int))
+    _priority = FLOAT;
+  else if (typeid(T) == typeid(long int))
+    _priority = DOUBLE;
 }
 
 template<typename T>
@@ -66,41 +74,47 @@ std::string	Number<T>::GetType() const
 template<typename T>
 bool		Number<T>::Equals(const IObject &object) const
 {
-  //  return (this->_value == ._value ? true : false);
-  return (true);
+  return (this->_value == static_cast<Number>(object)._value ? true : false);
 }
 
 template<typename T>
 IObject*	Number<T>::Clone() const
 {
-  return (0);
+  return (new IObject(this));
 }
 
 template<typename T>
 IObject*	Number<T>::Add(const IOperand& object) const
 {
-  (void)object;
-  return (0);
+  IObject	*obj;
+
+  this->_value + static_cast<Number>(object)._value;
+  if (this->_priority >= static_cast<Number>(object)._priority)
+    obj = new Number<T>;
+  else
+    obj = new Number<IOperand>;
+  return (obj);
 }
 
 template<typename T>
 IObject*	Number<T>::Substract(const IOperand& object) const
 {
-  (void)object;
+  this->_value - static_cast<Number>(object)._value;
   return (0);
 }
 
 template<typename T>
 IObject*	Number<T>::Multiply(const IOperand& object) const
 {
-  (void)object;
+  this->_value * static_cast<Number>(object)._value;
   return (0);
 }
 
 template<typename T>
 IObject*	Number<T>::Divide(const IOperand& object) const
 {
-  (void)object;
+  if (static_cast<Number>(object)._value == 0)
+    throw("Division par 0");
   return (0);
 }
 
@@ -108,3 +122,4 @@ template class	Number<short int>;
 template class	Number<long int>;
 template class	Number<float>;
 template class	Number<double>;
+

@@ -5,7 +5,7 @@
 // Login   <toumi_m@epitech.net>
 // 
 // Started on  Sat May 31 14:22:02 2008 majdi toumi
-// Last update Sat May 31 17:37:56 2008 caner candan
+// Last update Sat May 31 17:44:55 2008 majdi toumi
 //
 
 #ifndef __NUMBER_H__
@@ -38,9 +38,18 @@ public:
   IObject*	Multiply(const IOperand& object) const;
   IObject*	Divide(const IOperand& object) const;
 
-  //private:
+  enum
+    {
+      INT16 = 1,
+      INT32,
+      FLOAT,
+      DOUBLE
+    };
+
+private:
   std::string	_type;
   T		_value;
+  char		_priority;
 };
 
 #endif /* !__NUMBER_H__ */
