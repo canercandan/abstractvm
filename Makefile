@@ -5,15 +5,14 @@
 ## Login   <toumi_m@epitech.net>
 ## 
 ## Started on  Sat May 31 08:44:23 2008 majdi toumi
-## Last update Sat May 31 15:34:29 2008 majdi toumi
+## Last update Sat May 31 16:17:06 2008 majdi toumi
 ##
 
 # binary:
 NAME		=	abstractVm
 
 # sources:
-SRC		=	Number.cpp	\
-			Int16.cpp
+SRC		=	Number.cpp
 
 # objects:
 OBJ		=	$(SRC:.cpp=.o)

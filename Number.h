@@ -5,7 +5,7 @@
 // Login   <toumi_m@epitech.net>
 // 
 // Started on  Sat May 31 14:22:02 2008 majdi toumi
-// Last update Sat May 31 15:48:04 2008 majdi toumi
+// Last update Sat May 31 16:16:57 2008 majdi toumi
 //
 
 #ifndef __NUMBER_H__
@@ -18,23 +18,28 @@
 /*
 ** ~ Class:
 */
+template<typename T>
 class		Number : virtual public IOperand
 {
 public:
-  Number();
-  virtual ~Number();
+  Number(const std::string& type, const T& value);
   Number(const Number& nbr);
-  Number&	operator=(const Number& n);
+  virtual ~Number();
+  Number&	operator=(const Number& nbr);
 
-  std::string	ToString() const = 0;
-  std::string	GetType() const = 0;
-  bool		Equals(const IObject &value) const = 0;
-  IObject*	Clone() const = 0;
+  std::string	ToString() const;
+  std::string	GetType() const;
+  bool		Equals(const IObject &object) const;
+  IObject*	Clone() const;
 
-  IObject*	Add(const IOperand& object) const = 0;
-  IObject*	Substract(const IOperand& object) const = 0;
-  IObject*	Multiply(const IOperand& object) const = 0;
-  IObject*	Divide(const IOperand& object) const = 0;
+  IObject*	Add(const IOperand& object) const;
+  IObject*	Substract(const IOperand& object) const;
+  IObject*	Multiply(const IOperand& object) const;
+  IObject*	Divide(const IOperand& object) const;
+
+private:
+  std::string	_type;
+  T		_value;
 };
 
 #endif /* !__NUMBER_H__ */
