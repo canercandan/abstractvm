@@ -5,7 +5,7 @@
 // Login   <toumi_m@epitech.net>
 // 
 // Started on  Sat May 31 11:52:28 2008 majdi toumi
-// Last update Sat May 31 12:10:34 2008 majdi toumi
+// Last update Sat May 31 12:19:07 2008 majdi toumi
 //
 
 #include <string>
@@ -13,18 +13,3 @@
 
 
 
-std::string		Type::ToString() const
-{
-}
-
-std::string		Type::GetType() const
-{
-}
-
-std::string		Type::Equals() const
-{
-}
-
-std::string		Type::Clone() const
-{
-}
