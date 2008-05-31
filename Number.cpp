@@ -5,12 +5,14 @@
 // Login   <toumi_m@epitech.net>
 // 
 // Started on  Sat May 31 16:12:59 2008 majdi toumi
-// Last update Sat May 31 17:46:14 2008 majdi toumi
+// Last update Sat May 31 17:52:17 2008 majdi toumi
 //
 
 #include <iostream>
 #include <sstream>
 #include <string>
+#include "IObject.h"
+#include "IOperand.h"
 #include "Number.h"
 
 template<typename T>
@@ -67,54 +69,61 @@ template<typename T>
 std::string	Number<T>::GetType() const
 {
   //if (typeid(T) == typeid(short int))
-    
   return (this->_type);
 }
 
 template<typename T>
 bool		Number<T>::Equals(const IObject &object) const
 {
-  return (this->_value == static_cast<Number>(object)._value ? true : false);
+  (void)object;
+  //  return (this->_value == static_cast<Number>(object)._value ? true : false);
+  return (true);
 }
 
 template<typename T>
 IObject*	Number<T>::Clone() const
 {
-  return (new IObject(this));
+  //  return (new IObject(this));
+  return (0);
 }
 
 template<typename T>
 IObject*	Number<T>::Add(const IOperand& object) const
 {
-  IObject	*obj;
-
-  this->_value + static_cast<Number>(object)._value;
-  if (this->_priority >= static_cast<Number>(object)._priority)
-    obj = new Number<T>;
-  else
-    obj = new Number<IOperand>;
-  return (obj);
+  (void)object;
+  // this->_value + static_cast<Number>(object)._value;
+  //   if (this->_priority >= static_cast<Number>(object)._priority)
+  //     obj = new Number<T>;
+  //   else
+  //     obj = new Number<IOperand>;
+  // return (obj);
+  return (0);
 }
 
 template<typename T>
 IObject*	Number<T>::Substract(const IOperand& object) const
 {
-  this->_value - static_cast<Number>(object)._value;
+  (void)object;
+  //  this->_value - static_cast<Number>(object)._value;
   return (0);
 }
 
 template<typename T>
 IObject*	Number<T>::Multiply(const IOperand& object) const
 {
-  this->_value * static_cast<Number>(object)._value;
+  (void)object;
+  //  this->_value * static_cast<Number>(object)._value;
+  //  return (0);
   return (0);
 }
 
 template<typename T>
 IObject*	Number<T>::Divide(const IOperand& object) const
 {
-  if (static_cast<Number>(object)._value == 0)
-    throw("Division par 0");
+  (void)object;
+  //  if (static_cast<Number>(object)._value == 0)
+  //    throw("Division par 0");
+  //  return (0);
   return (0);
 }
 

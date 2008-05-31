@@ -5,7 +5,7 @@
 // Login   <candan_c@epitech.net>
 // 
 // Started on  Sat May 31 11:46:28 2008 caner candan
-// Last update Sat May 31 17:27:58 2008 caner candan
+// Last update Sat May 31 17:48:37 2008 majdi toumi
 //
 
 #include <string>
@@ -21,4 +21,4 @@ int	main(void)
 
   val = Factory<short int>::makeNumber(1234);
   std::cout << val->_value << std::endl;
-};
+}
