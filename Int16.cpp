@@ -5,7 +5,7 @@
 // Login   <toumi_m@epitech.net>
 // 
 // Started on  Sat May 31 14:40:50 2008 majdi toumi
-// Last update Sat May 31 15:37:21 2008 majdi toumi
+// Last update Sat May 31 15:47:27 2008 majdi toumi
 //
 
 #include <iostream>
@@ -51,27 +51,38 @@ std::string	Int16::GetType() const
 
 bool		Int16::Equals(const IObject &object) const
 {
+  (void)object;
   //  return (this->_value == object._value ? true : false);
+  return (true);
 }
 
 IObject*	Int16::Clone() const
 {
+  return (0);
 }
 
 IObject*	Int16::Add(const IOperand& object) const
 {
+  (void)object;
+  return (0);
 }
 
 IObject*	Int16::Substract(const IOperand& object) const
 {
+  (void)object;
+  return (0);
 }
 
 IObject*	Int16::Multiply(const IOperand& object) const
 {
+  (void)object;
+  return (0);
 }
 
 IObject*	Int16::Divide(const IOperand& object) const
 {
+  (void)object;
+  return (0);
 }
 
 
