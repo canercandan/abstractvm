@@ -5,7 +5,7 @@
 // Login   <toumi_m@epitech.net>
 // 
 // Started on  Sat May 31 14:22:02 2008 majdi toumi
-// Last update Sat May 31 16:36:23 2008 caner candan
+// Last update Sat May 31 17:37:56 2008 caner candan
 //
 
 #ifndef __NUMBER_H__
@@ -23,6 +23,7 @@ class		Number : virtual public IOperand
 {
 public:
   Number(const std::string& type, const T& value);
+  Number(const T& value);
   Number(const Number& nbr);
   virtual ~Number();
   Number&	operator=(const Number& nbr);
