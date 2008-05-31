@@ -1,15 +1,15 @@
 //
-// IObject.hpp for **AbstractVM** in /u/epitech_2010s/toumi_m/cu/rendu/cpp/colle2
+// IObject.h for **AbstractVm** in /u/epitech_2010s/toumi_m/cu/rendu/cpp/colle2
 // 
 // Made by majdi toumi
 // Login   <toumi_m@epitech.net>
 // 
-// Started on  Sat May 31 08:41:02 2008 majdi toumi
-// Last update Sat May 31 08:47:49 2008 majdi toumi
+// Started on  Sat May 31 11:57:31 2008 majdi toumi
+// Last update Sat May 31 11:57:44 2008 majdi toumi
 //
 
-#ifndef __IOBJECT_HPP__
-# define __IOBJECT_HPP__
+#ifndef __IOBJECT_H__
+# define __IOBJECT_H__
 
 #include <string>
 
@@ -25,4 +25,4 @@ public:
   virtual IObject*	Clone() const = 0;
 };
 
-#endif /* !__IOBJECT_HPP__ */
+#endif /* !__IOBJECT_H__ */

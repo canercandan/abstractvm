@@ -1,15 +1,15 @@
 //
-// IOperand.hpp for **AbstractVM** in /u/epitech_2010s/toumi_m/cu/rendu/cpp/colle2
+// IOperand.h for **AbstractVm** in /u/epitech_2010s/toumi_m/cu/rendu/cpp/colle2
 // 
 // Made by majdi toumi
 // Login   <toumi_m@epitech.net>
 // 
-// Started on  Sat May 31 08:51:21 2008 majdi toumi
-// Last update Sat May 31 09:30:49 2008 majdi toumi
+// Started on  Sat May 31 11:57:59 2008 majdi toumi
+// Last update Sat May 31 11:58:00 2008 majdi toumi
 //
 
-#ifndef __IOPERAND_HPP__
-# define __IOPERAND_HPP__
+#ifndef __IOPERAND_H__
+# define __IOPERAND_H__
 
 #include "IObject.hpp"
 
@@ -24,4 +24,5 @@ public:
   virtual IObject*	Multiply(const IOperand& object) const = 0;
   virtual IObject*	Divide(const IOperand& object) const = 0;
 };
-#endif /* !__IOPERAND_HPP__*/
+
+#endif /* !__IOPERAND_H__*/
