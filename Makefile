@@ -5,18 +5,14 @@
 ## Login   <toumi_m@epitech.net>
 ## 
 ## Started on  Sat May 31 08:44:23 2008 majdi toumi
-## Last update Sat May 31 09:46:35 2008 majdi toumi
+## Last update Sat May 31 10:41:14 2008 majdi toumi
 ##
 
 # binary:
 NAME		=	abstractVm
 
 # sources:
-SRC		=	main.cpp	\
-			Int16.cpp	\
-			Int32.cpp	\
-			Float.cpp	\
-			Double.cpp
+SRC		=	main.cpp
 
 # objects:
 OBJ		=	$(SRC:.cpp=.o)
