@@ -5,7 +5,7 @@
 // Login   <toumi_m@epitech.net>
 // 
 // Started on  Sat May 31 16:12:59 2008 majdi toumi
-// Last update Sat May 31 16:26:39 2008 caner candan
+// Last update Sat May 31 17:41:02 2008 caner candan
 //
 
 #include <iostream>
@@ -15,6 +15,12 @@
 
 template<typename T>
 Number<T>::Number(const std::string& t, const T& v) :  _type(t), _value(v)
+{
+}
+
+template<typename T>
+Number<T>::Number(const T& value)
+  : _value(value)
 {
 }
 
@@ -52,6 +58,8 @@ std::string	Number<T>::ToString() const
 template<typename T>
 std::string	Number<T>::GetType() const
 {
+  //if (typeid(T) == typeid(short int))
+    
   return (this->_type);
 }
 
