@@ -5,7 +5,7 @@
 // Login   <toumi_m@epitech.net>
 // 
 // Started on  Sat May 31 14:40:50 2008 majdi toumi
-// Last update Sat May 31 15:25:03 2008 majdi toumi
+// Last update Sat May 31 15:37:21 2008 majdi toumi
 //
 
 #include <iostream>
@@ -13,11 +13,11 @@
 #include <string>
 #include "Int16.h"
 
-Int16::Int16(const short int& val) :  _value(val), _type("int16")
+Int16::Int16(const short int& val) :  _type("int16"), _value(val)
 {
 }
 
-Int16::Int16(const Int16& i)
+Int16::Int16(const Int16& i) : IOperand(), Number()
 {
   *this = i;
 }
