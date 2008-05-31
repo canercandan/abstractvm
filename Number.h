@@ -5,7 +5,7 @@
 // Login   <toumi_m@epitech.net>
 // 
 // Started on  Sat May 31 14:22:02 2008 majdi toumi
-// Last update Sat May 31 17:51:52 2008 majdi toumi
+// Last update Sat May 31 18:31:22 2008 caner candan
 //
 
 #ifndef __NUMBER_H__

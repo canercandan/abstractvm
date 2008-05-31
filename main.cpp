@@ -5,7 +5,7 @@
 // Login   <candan_c@epitech.net>
 // 
 // Started on  Sat May 31 11:46:28 2008 caner candan
-// Last update Sat May 31 17:48:37 2008 majdi toumi
+// Last update Sat May 31 22:07:49 2008 caner candan
 //
 
 #include <string>
@@ -17,8 +17,8 @@
 
 int	main(void)
 {
-  Number<short int>	*val;
+  IObject	*val;
 
-  val = Factory<short int>::makeNumber(1234);
-  std::cout << val->_value << std::endl;
+  val = Factory::makeNumber("int16(-1234)");
+  std::cout << val->ToString() << std::endl;
 }

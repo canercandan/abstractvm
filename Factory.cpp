@@ -5,7 +5,7 @@
 // Login   <candan_c@epitech.net>
 // 
 // Started on  Sat May 31 14:25:37 2008 caner candan
-// Last update Sat May 31 17:39:33 2008 caner candan
+// Last update Sat May 31 22:06:29 2008 caner candan
 //
 
 #include <string>
@@ -13,27 +13,68 @@
 #include <iostream>
 #include "Factory.h"
 #include "Number.h"
+#include "IObject.h"
 
-/*
-  std::string		type(s.substr(0, s.find_first_of('(')));
-  std::istringstream	value(s.substr(s.find_first_of('(') + 1,
-				       s.length() - s.find_first_of(')') + 1));
+Factory::myMethod	Factory::method[] = {
+  {"int16", Factory::makeInt16},
+  {"int32", Factory::makeInt32},
+  {"float", Factory::makeFloat},
+  {"double", Factory::makeDouble},
+  {"", 0}
+};
 
-  if (type == "int16")
-    {
-      short int	nbr;
-      value >> nbr;
-      return (new Number<T>(type, nbr));
-    }
- */
-
-template <typename T>
-Number<T>	*Factory<T>::makeNumber(T value)
+IObject	*Factory::makeInt16(const std::string& s)
 {
-  return (new Number<T>(value));
+  short int		val;
+  std::istringstream	value(s.substr(s.find_first_of('(') + 1,
+				       s.find_first_of(')')));
+  value >> val;
+  return (new Number<short int>(val));
 }
 
-template class Factory<short int>;
-template class Factory<long int>;
-template class Factory<float>;
-template class Factory<double>;
+IObject	*Factory::makeInt32(const std::string& s)
+{
+  long int		val;
+  std::istringstream	value(s.substr(s.find_first_of('(') + 1,
+				       s.find_first_of(')')));
+  value >> val;
+  return (new Number<long int>(val));
+}
+
+IObject	*Factory::makeFloat(const std::string& s)
+{
+  float			val;
+  std::istringstream	value(s.substr(s.find_first_of('(') + 1,
+				       s.find_first_of(')')));
+  value >> val;
+  return (new Number<float>(val));
+}
+
+IObject	*Factory::makeDouble(const std::string& s)
+{
+  double		val;
+  std::istringstream	value(s.substr(s.find_first_of('(') + 1,
+				       s.find_first_of(')')));
+  value >> val;
+  return (new Number<double>(val));
+}
+
+IObject	*Factory::makeNumber(const std::string& s)
+{
+  std::string	type(s.substr(0, s.find_first_of('(')));
+  int		i;
+
+  try
+    {
+      for (i = 0; method[i].func; i++)
+	if (method[i].type == type)
+	  return (method[i].func(s));
+      throw true;
+    }
+  catch (bool)
+    {
+      std::cout << "type not found" << std::endl;
+      exit(-1);
+    }
+  return (0);
+}
