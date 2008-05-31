@@ -5,7 +5,7 @@
 // Login   <toumi_m@epitech.net>
 // 
 // Started on  Sat May 31 14:36:59 2008 majdi toumi
-// Last update Sat May 31 15:24:50 2008 majdi toumi
+// Last update Sat May 31 15:48:53 2008 majdi toumi
 //
 
 #ifndef __INT16_H__
@@ -21,6 +21,7 @@
 */
 class		Int16 : public Number
 {
+public:
   Int16();
   Int16(const short int& val);
   Int16(const Int16& i);
