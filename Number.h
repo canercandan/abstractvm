@@ -5,12 +5,14 @@
 // Login   <toumi_m@epitech.net>
 // 
 // Started on  Sat May 31 14:22:02 2008 majdi toumi
-// Last update Sun Jun  1 12:41:54 2008 majdi toumi
+// Last update Sun Jun  1 15:03:37 2008 majdi toumi
 //
 
 #ifndef __NUMBER_H__
 # define __NUMBER_H__
 
+#include <iostream>
+#include <sstream>
 #include <string>
 #include <map>
 #include <vector>
@@ -34,7 +36,6 @@ public:
 
   std::string		ToString() const;
   std::string		GetType() const;
-  //  IObject*		GetValue(const T& value);
   bool			Equals(const IObject& object) const;
   IObject*		Clone() const;
 
@@ -69,11 +70,11 @@ public:
     } priority;
 
 private:
-  T			_value;
-  int			_priority;
-  std::string		_type;
-  MyMap			_map;
-  MyVect		_vect;
+  T				_value;
+  int				_priority;
+  std::string			_type;
+  MyMap				_map;
+  MyVect			_vect;
 };
 
 #endif /* !__NUMBER_H__ */

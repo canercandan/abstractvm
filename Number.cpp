@@ -5,7 +5,7 @@
 // Login   <toumi_m@epitech.net>
 // 
 // Started on  Sat May 31 16:12:59 2008 majdi toumi
-// Last update Sun Jun  1 12:42:22 2008 majdi toumi
+// Last update Sun Jun  1 15:08:11 2008 majdi toumi
 //
 
 #include <iostream>
@@ -103,7 +103,7 @@ template<typename T>
 IObject*		Number<T>::Add(const IOperand& object) const
 {
   std::istringstream	iss(object.ToString());
-  T			val;
+  double		val;
 
   iss >> val;
   return (addType(this->_value + val));
@@ -137,7 +137,7 @@ template<typename T>
 IObject*		Number<T>::Substract(const IOperand& object) const
 {
   std::istringstream	iss(object.ToString());
-  T			val;
+  double		val;
 
   iss >> val;
   return (new Number<T>(this->_value - val));
@@ -171,7 +171,7 @@ template<typename T>
 IObject*		Number<T>::Multiply(const IOperand& object) const
 {
   std::istringstream	iss(object.ToString());
-  T			val;
+  double		val;
 
   iss >> val;
   return (new Number<T>(this->_value * val));
@@ -205,7 +205,7 @@ template<typename T>
 IObject*		Number<T>::Divide(const IOperand& object) const
 {
   std::istringstream	iss(object.ToString());
-  T			val;
+  double			val;
 
   iss >> val;
   if (val == 0)
@@ -240,3 +240,38 @@ IObject*		Number<T>::div_double(const double& val) const
   return (new Number<double>(val));
 }
 
+// template<typename T>
+// int			Number<T>::GetInt(std::istringstream& iss)
+// {
+//   int			nb;
+
+//   iss >> nb;
+//   return (nb);
+// }
+
+// template<typename T>
+// long int		Number<T>::GetLong(std::istringstream& iss)
+// {
+//   long int		nb;
+
+//   iss >> nb;
+//   return (nb);
+// }
+
+// template<typename T>
+// float			Number<T>::GetFloat(std::istringstream& iss)
+// {
+//   float			nb;
+
+//   iss >> nb;
+//   return (nb);
+// }
+
+// template<typename T>
+// double			Number<T>::GetDouble(std::istringstream& iss)
+// {
+//   double		nb;
+
+//   iss >> nb;
+//   return (nb);
+// }

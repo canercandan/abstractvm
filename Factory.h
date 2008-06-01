@@ -5,7 +5,7 @@
 // Login   <candan_c@epitech.net>
 // 
 // Started on  Sat May 31 14:23:22 2008 caner candan
-// Last update Sun Jun  1 12:44:24 2008 majdi toumi
+// Last update Sun Jun  1 15:09:46 2008 majdi toumi
 //
 
 #ifndef __FACTORY_H__
@@ -25,7 +25,7 @@ public:
     std::string	type;
     myFunc	func;
   };
-
+  
   static myMethod	method[];
 
   static IObject	*makeInt16(const std::string& s);
