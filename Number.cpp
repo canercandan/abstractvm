@@ -5,7 +5,7 @@
 // Login   <toumi_m@epitech.net>
 // 
 // Started on  Sat May 31 16:12:59 2008 majdi toumi
-// Last update Sun Jun  1 15:08:11 2008 majdi toumi
+// Last update Sun Jun  1 15:14:03 2008 majdi toumi
 //
 
 #include <iostream>
@@ -140,29 +140,29 @@ IObject*		Number<T>::Substract(const IOperand& object) const
   double		val;
 
   iss >> val;
-  return (new Number<T>(this->_value - val));
+  return (subType(this->_value - val));
 }
 
 template<typename T>
-IObject*		Number<T>::sub_int16(const int& val) const
+IObject*		Number<T>::subType(const int& val) const
 {
   return (new Number<int>(val));
 }
 
 template<typename T>
-IObject*		Number<T>::sub_int32(const long int& val) const
+IObject*		Number<T>::subType(const long int& val) const
 {
   return (new Number<long int>(val));
 }
 
 template<typename T>
-IObject*		Number<T>::sub_float(const float& val) const
+IObject*		Number<T>::subType(const float& val) const
 {
   return (new Number<float>(val));
 }
 
 template<typename T>
-IObject*		Number<T>::sub_double(const double& val) const
+IObject*		Number<T>::subType(const double& val) const
 {
   return (new Number<double>(val));
 }
@@ -174,29 +174,29 @@ IObject*		Number<T>::Multiply(const IOperand& object) const
   double		val;
 
   iss >> val;
-  return (new Number<T>(this->_value * val));
+  return (multType(this->_value * val));
 }
 
 template<typename T>
-IObject*		Number<T>::mult_int16(const int& val) const
+IObject*		Number<T>::multType(const int& val) const
 {
   return (new Number<int>(val));
 }
 
 template<typename T>
-IObject*		Number<T>::mult_int32(const long int& val) const
+IObject*		Number<T>::multType(const long int& val) const
 {
   return (new Number<long int>(val));
 }
 
 template<typename T>
-IObject*		Number<T>::mult_float(const float& val) const
+IObject*		Number<T>::multType(const float& val) const
 {
   return (new Number<float>(val));
 }
 
 template<typename T>
-IObject*		Number<T>::mult_double(const double& val) const
+IObject*		Number<T>::multType(const double& val) const
 {
   return (new Number<double>(val));
 }
@@ -217,61 +217,26 @@ IObject*		Number<T>::Divide(const IOperand& object) const
 }
 
 template<typename T>
-IObject*		Number<T>::div_int16(const int& val) const
+IObject*		Number<T>::divType(const int& val) const
 {
   return (new Number<int>(val));
 }
 
 template<typename T>
-IObject*		Number<T>::div_int32(const long int& val) const
+IObject*		Number<T>::divType(const long int& val) const
 {
   return (new Number<long int>(val));
 }
 
 template<typename T>
-IObject*		Number<T>::div_float(const float& val) const
+IObject*		Number<T>::divType(const float& val) const
 {
   return (new Number<float>(val));
 }
 
 template<typename T>
-IObject*		Number<T>::div_double(const double& val) const
+IObject*		Number<T>::divType(const double& val) const
 {
   return (new Number<double>(val));
 }
 
-// template<typename T>
-// int			Number<T>::GetInt(std::istringstream& iss)
-// {
-//   int			nb;
-
-//   iss >> nb;
-//   return (nb);
-// }
-
-// template<typename T>
-// long int		Number<T>::GetLong(std::istringstream& iss)
-// {
-//   long int		nb;
-
-//   iss >> nb;
-//   return (nb);
-// }
-
-// template<typename T>
-// float			Number<T>::GetFloat(std::istringstream& iss)
-// {
-//   float			nb;
-
-//   iss >> nb;
-//   return (nb);
-// }
-
-// template<typename T>
-// double			Number<T>::GetDouble(std::istringstream& iss)
-// {
-//   double		nb;
-
-//   iss >> nb;
-//   return (nb);
-// }

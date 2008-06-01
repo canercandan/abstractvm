@@ -5,7 +5,7 @@
 // Login   <toumi_m@epitech.net>
 // 
 // Started on  Sat May 31 14:22:02 2008 majdi toumi
-// Last update Sun Jun  1 15:03:37 2008 majdi toumi
+// Last update Sun Jun  1 15:13:11 2008 majdi toumi
 //
 
 #ifndef __NUMBER_H__
@@ -48,18 +48,18 @@ public:
   IObject*		addType(const long int& val) const;
   IObject*		addType(const float& val) const;
   IObject*		addType(const double& val) const;
-  IObject*		sub_int16(const int& val) const;
-  IObject*		sub_int32(const long int& val) const;
-  IObject*		sub_float(const float& val) const;
-  IObject*		sub_double(const double& val) const;
-  IObject*		mult_int16(const int& val) const;
-  IObject*		mult_int32(const long int& val) const;
-  IObject*		mult_float(const float& val) const;
-  IObject*		mult_double(const double& val) const;
-  IObject*		div_int16(const int& val) const;
-  IObject*		div_int32(const long int& val) const;
-  IObject*		div_float(const float& val) const;
-  IObject*		div_double(const double& val) const;
+  IObject*		subType(const int& val) const;
+  IObject*		subType(const long int& val) const;
+  IObject*		subType(const float& val) const;
+  IObject*		subType(const double& val) const;
+  IObject*		multType(const int& val) const;
+  IObject*		multType(const long int& val) const;
+  IObject*		multType(const float& val) const;
+  IObject*		multType(const double& val) const;
+  IObject*		divType(const int& val) const;
+  IObject*		divType(const long int& val) const;
+  IObject*		divType(const float& val) const;
+  IObject*		divType(const double& val) const;
 
   enum
     {
