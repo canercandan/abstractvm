@@ -23,6 +23,6 @@ dump
 pop
 ; Pop the value on top of the stack
 
-assert float(42.42)
+assert double(42.42)
 ; This opcode may stop the execution of the program if
 ; the value on top of the stack does not equal the operand.

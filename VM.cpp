@@ -5,7 +5,7 @@
 // Login   <candan_c@epitech.net>
 // 
 // Started on  Sat May 31 15:35:37 2008 caner candan
-// Last update Sun Jun  1 14:04:45 2008 caner candan
+// Last update Sun Jun  1 14:20:56 2008 caner candan
 //
 
 #include <fstream>
@@ -103,6 +103,12 @@ void		VM::FileStackToVMStack(void)
 	    break;
 	  }
     }
+}
+
+void	VM::clearStack(void)
+{
+  this->_fileStack.clear();
+  this->_vmStack.clear();
 }
 
 void	VM::actPush(myListStack::const_iterator& it,

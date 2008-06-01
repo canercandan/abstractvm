@@ -5,7 +5,7 @@
 // Login   <candan_c@epitech.net>
 // 
 // Started on  Sat May 31 14:21:58 2008 caner candan
-// Last update Sun Jun  1 13:05:15 2008 caner candan
+// Last update Sun Jun  1 14:20:30 2008 caner candan
 //
 
 #ifndef __VM_H__
@@ -43,6 +43,7 @@ public:
 
   bool	FileToStack(const std::string& path);
   void	FileStackToVMStack(void);
+  void	clearStack(void);
 
   static void	actPush(myListStack::const_iterator&,
 			myListStack::const_iterator&,
