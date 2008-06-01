@@ -5,7 +5,7 @@
 // Login   <candan_c@epitech.net>
 // 
 // Started on  Sat May 31 15:35:37 2008 caner candan
-// Last update Sun Jun  1 14:44:34 2008 caner candan
+// Last update Sun Jun  1 14:50:30 2008 caner candan
 //
 
 #include <fstream>
@@ -266,10 +266,10 @@ void		VM::actAssert(myListStack::const_iterator& it,
 	  std::cout << "The value on top of the stack does "
 		    << "not equal the operand." << std::endl;
 	  if (e == 1)
-	    std::cout << op->ToString() << " <> "
+	    std::cout << " -> " << op->ToString() << " <> "
 		      << stack.back()->ToString() << std::endl;
 	  else if (e == 2)
-	    std::cout << op->GetType() << " <> "
+	    std::cout << " -> " << op->GetType() << " <> "
 		      << stack.back()->GetType() << std::endl;
 	  exit(-1);
 	}
