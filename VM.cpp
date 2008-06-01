@@ -5,20 +5,30 @@
 // Login   <candan_c@epitech.net>
 // 
 // Started on  Sat May 31 15:35:37 2008 caner candan
-// Last update Sun Jun  1 12:43:29 2008 caner candan
+// Last update Sun Jun  1 14:04:45 2008 caner candan
 //
 
 #include <fstream>
 #include <map>
 #include <list>
+#include <vector>
 #include <string>
+#include <cstdlib>
 #include <iostream>
 #include "VM.h"
 #include "IObject.h"
+#include "IOperand.h"
 #include "Factory.h"
 
 VM::myMethod	VM::method[] = {
   {"push", actPush},
+  {"pop", actPop},
+  {"add", actAdd},
+  {"sub", actSub},
+  {"mul", actMul},
+  {"div", actDiv},
+  {"dump", actDump},
+  {"assert", actAssert},
   {"", 0}
 };
 
@@ -65,16 +75,10 @@ bool	VM::FileToStack(const std::string& path)
 	{
 	  pos = std::string(ptr).find(' ');
 	  pos2 = std::string(ptr).size();
-	  std::cout << "[";
-	  std::cout << std::string(ptr).substr(0, pos);
 	  list.push_back(std::string(ptr).substr(0, pos));
 	  list.push_back(std::string(ptr).substr(pos + 1, pos2));
  	  this->_fileStack.push_back(list);
 	  list.clear();
-	  std::cout << "][";
-	  if (pos2 > pos)
-	    std::cout << std::string(ptr).substr(pos + 1, pos2);
-	  std::cout << "]" << std::endl;
 	}
     }
   ifs.close();
@@ -105,13 +109,149 @@ void	VM::actPush(myListStack::const_iterator& it,
 		    myListStack::const_iterator& end,
 		    VMStack& stack)
 {
-  std::cout << "coucouc je push" << std::endl;
+  std::cout << "[push] ";
   while (++it != end)
     {
-      std::cout << "[" << *it << "]";
-      stack.push(Factory::makeNumber(*it));
-      std::cout << "["
-		<< stack.top()->ToString()
-		<< "] : ";
+      stack.push_back(Factory::makeNumber(*it));
+      std::cout << stack.back()->ToString()
+		<< " ";
     }
+  std::cout << std::endl;
+}
+
+void	VM::actPop(myListStack::const_iterator&,
+		   myListStack::const_iterator&,
+		   VMStack& stack)
+{
+  stack.pop_back();
+}
+
+void		VM::actAdd(myListStack::const_iterator&,
+			   myListStack::const_iterator&,
+			   VMStack& stack)
+{
+  IOperand	*op1;
+  IOperand	*op2;
+  IObject	*res;
+
+  op1 = static_cast<IOperand*>(stack.back());
+  stack.pop_back();
+  op2 = static_cast<IOperand*>(stack.back());
+  stack.pop_back();
+  res = op1->Add(*op2);
+  stack.push_back(res);
+  std::cout << "[add] "
+	    << op1->ToString() << " + "
+	    << op2->ToString() << " = "
+	    << res->ToString() << std::endl;
+}
+
+void		VM::actSub(myListStack::const_iterator&,
+			   myListStack::const_iterator&,
+			   VMStack& stack)
+{
+  IOperand	*op1;
+  IOperand	*op2;
+  IObject	*res;
+
+  op1 = static_cast<IOperand*>(stack.back());
+  stack.pop_back();
+  op2 = static_cast<IOperand*>(stack.back());
+  stack.pop_back();
+  res = op1->Substract(*op2);
+  stack.push_back(res);
+  std::cout << "[sub] "
+	    << op1->ToString() << " - "
+	    << op2->ToString() << " = "
+	    << res->ToString() << std::endl;
+}
+
+void		VM::actMul(myListStack::const_iterator&,
+			   myListStack::const_iterator&,
+			   VMStack& stack)
+{
+  IOperand	*op1;
+  IOperand	*op2;
+  IObject	*res;
+
+  op1 = static_cast<IOperand*>(stack.back());
+  stack.pop_back();
+  op2 = static_cast<IOperand*>(stack.back());
+  stack.pop_back();
+  res = op1->Multiply(*op2);
+  stack.push_back(res);
+  std::cout << "[mul] "
+	    << op1->ToString() << " x "
+	    << op2->ToString() << " = "
+	    << res->ToString() << std::endl;
+}
+
+void		VM::actDiv(myListStack::const_iterator&,
+			   myListStack::const_iterator&,
+			   VMStack& stack)
+{
+  IOperand	*op1;
+  IOperand	*op2;
+  IObject	*res;
+
+  op1 = static_cast<IOperand*>(stack.back());
+  stack.pop_back();
+  op2 = static_cast<IOperand*>(stack.back());
+  stack.pop_back();
+  res = op1->Divide(*op2);
+  stack.push_back(res);
+  std::cout << "[div] "
+	    << op1->ToString() << " - "
+	    << op2->ToString() << " = "
+	    << res->ToString() << std::endl;
+}
+
+void		VM::actDump(myListStack::const_iterator&,
+			    myListStack::const_iterator&,
+			    VMStack& stack)
+{
+  size_t	size;
+
+  size = stack.size();
+  std::cout << "[dump]" << std::endl
+	    << "----------" << std::endl;
+  while (size--)
+    {
+      std::cout << stack[size]->ToString() << " ("
+		<< stack[size]->GetType() << ")" << std::endl;
+    }
+  std::cout << "----------" << std::endl;
+}
+
+void		VM::actAssert(myListStack::const_iterator& it,
+			      myListStack::const_iterator& end,
+			      VMStack& stack)
+{
+  IObject	*op;
+
+  std::cout << "[assert] ";
+  while (++it != end)
+    {
+      op = Factory::makeNumber(*it);
+      try
+	{
+	  if (op->ToString() != stack.back()->ToString())
+	    throw 1;
+	  if (op->GetType() != stack.back()->GetType())
+	    throw 2;
+	}
+      catch (int e)
+	{
+	  std::cout << "The value on top of the stack does "
+		    << "not equal the operand." << std::endl;
+	  if (e == 1)
+	    std::cout << op->ToString() << " <> "
+		      << stack.back()->ToString() << std::endl;
+	  else if (e == 2)
+	    std::cout << op->GetType() << " <> "
+		      << stack.back()->GetType() << std::endl;
+	  exit(-1);
+	}
+    }
+  std::cout << "Good test" << std::endl;
 }
