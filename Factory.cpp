@@ -5,7 +5,7 @@
 // Login   <candan_c@epitech.net>
 // 
 // Started on  Sat May 31 14:25:37 2008 caner candan
-// Last update Sun Jun  1 11:06:32 2008 caner candan
+// Last update Sun Jun  1 12:44:01 2008 majdi toumi
 //
 
 #include <string>
@@ -31,7 +31,7 @@ IObject	*Factory::makeInt16(const std::string& s)
   std::istringstream	value(s.substr(s.find_first_of('(') + 1,
 				       s.find_first_of(')')));
   value >> val;
-  return (new Number<short int>(val));
+  return (new Number<int>(val));
 }
 
 IObject	*Factory::makeInt32(const std::string& s)
@@ -85,7 +85,7 @@ IObject	*Factory::makeNumber(const std::string& s)
   catch (bool)
     {
       std::cout << "type not found" << std::endl;
-      exit(-1);
+      //exit(-1);
     }
   return (0);
 }

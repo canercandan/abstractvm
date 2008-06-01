@@ -5,7 +5,7 @@
 // Login   <candan_c@epitech.net>
 // 
 // Started on  Sat May 31 14:23:22 2008 caner candan
-// Last update Sun Jun  1 11:06:07 2008 caner candan
+// Last update Sun Jun  1 12:44:24 2008 majdi toumi
 //
 
 #ifndef __FACTORY_H__

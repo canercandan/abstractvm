@@ -5,7 +5,7 @@
 ## Login   <toumi_m@epitech.net>
 ## 
 ## Started on  Sat May 31 08:44:23 2008 majdi toumi
-## Last update Sat May 31 17:47:15 2008 majdi toumi
+## Last update Sun Jun  1 12:38:17 2008 majdi toumi
 ##
 
 # binary:
@@ -42,7 +42,7 @@ WARNINGS	+=	-Woverloaded-virtual
 CFLAGS		+=	$(INCLUDES) $(WARNINGS) $(DEBUG)
 
 CC		=	$(CC_FREEBSD)
-CC_FREEBSD	=	/usr/bin/g++
+CC_FREEBSD	=	g++43
 CC_LINUX	=	/usr/bin/g++
 CC_SUNOS	=	/usr/sfw/bin/g++
 

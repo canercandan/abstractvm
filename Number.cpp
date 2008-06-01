@@ -5,33 +5,50 @@
 // Login   <toumi_m@epitech.net>
 // 
 // Started on  Sat May 31 16:12:59 2008 majdi toumi
-// Last update Sat May 31 17:52:17 2008 majdi toumi
+// Last update Sun Jun  1 12:42:22 2008 majdi toumi
 //
 
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <typeinfo>
+#include <cstdlib>
 #include "IObject.h"
 #include "IOperand.h"
 #include "Number.h"
 
-template<typename T>
-Number<T>::Number(const std::string& t, const T& v) :  _type(t), _value(v)
-{
-//   if (typeid(T) == typeid(short int))
-//     _priority = INT16;
-//   else if (typeid(T) == typeid(long int))
-//     _priority = INT32;
-//   else if (typeid(T) == typeid(long int))
-//     _priority = FLOAT;
-//   else if (typeid(T) == typeid(long int))
-//     _priority = DOUBLE;
-}
+template class Number<int>;
+template class Number<long int>;
+template class Number<float>;
+template class Number<double>;
 
 template<typename T>
-Number<T>::Number(const T& value)
-  : _value(value)
+Number<T>::Number(const T& value) : _value(value)
 {
+  MyMap::iterator itb;
+  MyMap::iterator ite;
+
+  _map[typeid(int).name()] = INT16;
+  _map[typeid(long int).name()] = INT32;
+  _map[typeid(float).name()] = FLOAT;
+  _map[typeid(double).name()] = DOUBLE;
+
+  _vect.push_back("Int16");
+  _vect.push_back("Int32");
+  _vect.push_back("Float");
+  _vect.push_back("Double");
+
+  itb = _map.begin();
+  ite = _map.end();
+  while (itb != ite)
+    {
+      if ((*itb).first == typeid(value).name())
+	{
+	  _priority = (*itb).second;
+	  _type = _vect[_priority];
+	}
+      ++itb;
+    }
 }
 
 template<typename T>
@@ -49,15 +66,12 @@ template<typename T>
 Number<T>&		Number<T>::operator=(const Number& right)
 {
   if (this != &right)
-    {
-      this->_type = right._type;
-      this->_value = right._value;
-    }
+    this->_value = right._value;
   return (*this);
 }
 
 template<typename T>
-std::string	Number<T>::ToString() const
+std::string		Number<T>::ToString() const
 {
   std::ostringstream	oss;
 
@@ -66,69 +80,163 @@ std::string	Number<T>::ToString() const
 }
 
 template<typename T>
-std::string	Number<T>::GetType() const
+std::string		Number<T>::GetType() const
 {
-  //if (typeid(T) == typeid(short int))
   return (this->_type);
 }
 
 template<typename T>
-bool		Number<T>::Equals(const IObject &object) const
+bool			Number<T>::Equals(const IObject &object) const
 {
-  (void)object;
-  //  return (this->_value == static_cast<Number>(object)._value ? true : false);
-  return (true);
+  std::string		type(object.GetType());
+
+  return (this->_type == type ? true : false);
 }
 
 template<typename T>
-IObject*	Number<T>::Clone() const
+IObject*		Number<T>::Clone() const
 {
-  //  return (new IObject(this));
-  return (0);
+  return (new Number<T>(*this));
 }
 
 template<typename T>
-IObject*	Number<T>::Add(const IOperand& object) const
+IObject*		Number<T>::Add(const IOperand& object) const
 {
-  (void)object;
-  // this->_value + static_cast<Number>(object)._value;
-  //   if (this->_priority >= static_cast<Number>(object)._priority)
-  //     obj = new Number<T>;
-  //   else
-  //     obj = new Number<IOperand>;
-  // return (obj);
-  return (0);
+  std::istringstream	iss(object.ToString());
+  T			val;
+
+  iss >> val;
+  return (addType(this->_value + val));
 }
 
 template<typename T>
-IObject*	Number<T>::Substract(const IOperand& object) const
+IObject*		Number<T>::addType(const int& val) const
 {
-  (void)object;
-  //  this->_value - static_cast<Number>(object)._value;
-  return (0);
+  return (new Number<int>(val));
 }
 
 template<typename T>
-IObject*	Number<T>::Multiply(const IOperand& object) const
+IObject*		Number<T>::addType(const long int& val) const
 {
-  (void)object;
-  //  this->_value * static_cast<Number>(object)._value;
-  //  return (0);
-  return (0);
+  return (new Number<long int>(val));
 }
 
 template<typename T>
-IObject*	Number<T>::Divide(const IOperand& object) const
+IObject*		Number<T>::addType(const float& val) const
 {
-  (void)object;
-  //  if (static_cast<Number>(object)._value == 0)
-  //    throw("Division par 0");
-  //  return (0);
-  return (0);
+  return (new Number<float>(val));
 }
 
-template class	Number<short int>;
-template class	Number<long int>;
-template class	Number<float>;
-template class	Number<double>;
+template<typename T>
+IObject*		Number<T>::addType(const double& val) const
+{
+  return (new Number<double>(val));
+}
+
+template<typename T>
+IObject*		Number<T>::Substract(const IOperand& object) const
+{
+  std::istringstream	iss(object.ToString());
+  T			val;
+
+  iss >> val;
+  return (new Number<T>(this->_value - val));
+}
+
+template<typename T>
+IObject*		Number<T>::sub_int16(const int& val) const
+{
+  return (new Number<int>(val));
+}
+
+template<typename T>
+IObject*		Number<T>::sub_int32(const long int& val) const
+{
+  return (new Number<long int>(val));
+}
+
+template<typename T>
+IObject*		Number<T>::sub_float(const float& val) const
+{
+  return (new Number<float>(val));
+}
+
+template<typename T>
+IObject*		Number<T>::sub_double(const double& val) const
+{
+  return (new Number<double>(val));
+}
+
+template<typename T>
+IObject*		Number<T>::Multiply(const IOperand& object) const
+{
+  std::istringstream	iss(object.ToString());
+  T			val;
+
+  iss >> val;
+  return (new Number<T>(this->_value * val));
+}
+
+template<typename T>
+IObject*		Number<T>::mult_int16(const int& val) const
+{
+  return (new Number<int>(val));
+}
+
+template<typename T>
+IObject*		Number<T>::mult_int32(const long int& val) const
+{
+  return (new Number<long int>(val));
+}
+
+template<typename T>
+IObject*		Number<T>::mult_float(const float& val) const
+{
+  return (new Number<float>(val));
+}
+
+template<typename T>
+IObject*		Number<T>::mult_double(const double& val) const
+{
+  return (new Number<double>(val));
+}
+
+template<typename T>
+IObject*		Number<T>::Divide(const IOperand& object) const
+{
+  std::istringstream	iss(object.ToString());
+  T			val;
+
+  iss >> val;
+  if (val == 0)
+    {
+      std::cout << "division per 0" << std::endl;
+      exit(-1);
+    }
+  return (new Number<T>(this->_value / val));
+}
+
+template<typename T>
+IObject*		Number<T>::div_int16(const int& val) const
+{
+  return (new Number<int>(val));
+}
+
+template<typename T>
+IObject*		Number<T>::div_int32(const long int& val) const
+{
+  return (new Number<long int>(val));
+}
+
+template<typename T>
+IObject*		Number<T>::div_float(const float& val) const
+{
+  return (new Number<float>(val));
+}
+
+template<typename T>
+IObject*		Number<T>::div_double(const double& val) const
+{
+  return (new Number<double>(val));
+}
 

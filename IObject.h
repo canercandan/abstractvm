@@ -5,7 +5,7 @@
 // Login   <toumi_m@epitech.net>
 // 
 // Started on  Sat May 31 11:57:31 2008 majdi toumi
-// Last update Sat May 31 11:57:44 2008 majdi toumi
+// Last update Sat May 31 21:47:34 2008 majdi toumi
 //
 
 #ifndef __IOBJECT_H__
