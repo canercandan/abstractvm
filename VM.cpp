@@ -5,7 +5,7 @@
 // Login   <candan_c@epitech.net>
 // 
 // Started on  Sat May 31 15:35:37 2008 caner candan
-// Last update Sun Jun  1 10:39:24 2008 caner candan
+// Last update Sun Jun  1 12:43:29 2008 caner candan
 //
 
 #include <fstream>
@@ -16,6 +16,11 @@
 #include "VM.h"
 #include "IObject.h"
 #include "Factory.h"
+
+VM::myMethod	VM::method[] = {
+  {"push", actPush},
+  {"", 0}
+};
 
 VM::VM()
 {}
@@ -33,7 +38,7 @@ VM&	VM::operator=(const VM& v)
   return (*this);
 }
 
-bool	VM::fileToStack(const std::string& path)
+bool	VM::FileToStack(const std::string& path)
 {
   std::ifstream	ifs;
   char		buf[1024];
@@ -56,9 +61,6 @@ bool	VM::fileToStack(const std::string& path)
 	ptr = &ptr[pos];
       if ((pos = std::string(ptr).find(';')) != std::string::npos)
 	ptr[pos] = 0;
-//       if ((pos = std::string(ptr).find_last_not_of(" \t"))
-// 	  != std::string::npos)
-// 	ptr[pos] = 0;
       if (std::string(ptr) != "")
 	{
 	  pos = std::string(ptr).find(' ');
@@ -79,25 +81,37 @@ bool	VM::fileToStack(const std::string& path)
   return (true);
 }
 
-void		VM::dumpFileStack(void)
+void		VM::FileStackToVMStack(void)
 {
   myListStack::const_iterator	it;
   myListStack::const_iterator	end;
   size_t	i;
-  IObject	*val;
+  int		j;
 
   for (i = 0; i < this->_fileStack.size(); i++)
     {
       it = this->_fileStack[i].begin();
       end = this->_fileStack[i].end();
-      if (*it != "push")
-	continue;      
-      while (++it != end)
-	{
-	  std::cout << "[" << *it << "]";
-	  val = Factory::makeNumber(*it);
-	  std::cout << "[" << val->ToString() << "] : ";
-	}
-      std::cout << std::endl;
+      for (j = 0; method[j].func; j++)
+	if (method[j].type == *it)
+	  {
+	    method[j].func(it, end, this->_vmStack);
+	    break;
+	  }
+    }
+}
+
+void	VM::actPush(myListStack::const_iterator& it,
+		    myListStack::const_iterator& end,
+		    VMStack& stack)
+{
+  std::cout << "coucouc je push" << std::endl;
+  while (++it != end)
+    {
+      std::cout << "[" << *it << "]";
+      stack.push(Factory::makeNumber(*it));
+      std::cout << "["
+		<< stack.top()->ToString()
+		<< "] : ";
     }
 }

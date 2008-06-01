@@ -5,7 +5,7 @@
 // Login   <candan_c@epitech.net>
 // 
 // Started on  Sat May 31 14:25:37 2008 caner candan
-// Last update Sun Jun  1 12:44:01 2008 majdi toumi
+// Last update Sun Jun  1 12:47:49 2008 caner candan
 //
 
 #include <string>
@@ -71,12 +71,13 @@ void		Factory::toLowerCase(std::string& s)
 
 IObject	*Factory::makeNumber(const std::string& s)
 {
-  std::string	type(s.substr(0, s.find_first_of('(')));
+  std::string	type;
   int		i;
 
+  type = s.substr(0, s.find_first_of('('));
+  toLowerCase(type);
   try
     {
-      toLowerCase(type);
       for (i = 0; method[i].func; i++)
 	if (method[i].type == type)
 	  return (method[i].func(s));
@@ -85,7 +86,7 @@ IObject	*Factory::makeNumber(const std::string& s)
   catch (bool)
     {
       std::cout << "type not found" << std::endl;
-      //exit(-1);
+      exit(-1);
     }
   return (0);
 }

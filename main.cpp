@@ -5,7 +5,7 @@
 // Login   <candan_c@epitech.net>
 // 
 // Started on  Sat May 31 11:46:28 2008 caner candan
-// Last update Sun Jun  1 12:45:40 2008 majdi toumi
+// Last update Sun Jun  1 12:47:05 2008 caner candan
 //
 
 #include <string>
@@ -24,6 +24,9 @@ int		main(void)
   VM		vm;
   IObject*		val;
 
+  vm.FileToStack(std::string("xdata/test1.s"));
+  vm.FileStackToVMStack();
+
   std::cout << nbr1.GetType() << std::endl;
   std::cout << nbr2.GetType() << std::endl;
   std::cout << nbr3.GetType() << std::endl;
@@ -34,8 +37,6 @@ int		main(void)
   std::cout << nbr3.Equals(nbr4) << std::endl;
   std::cout << nbr4.Equals(nbr2) << std::endl;
 
-  vm.fileToStack(std::string("xdata/test1.s"));
-  vm.dumpFileStack();
   val = Factory::makeNumber("int16(-1234)");
   std::cout << val->ToString() << std::endl;
   return (0);
