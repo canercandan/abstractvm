@@ -1,6 +1,7 @@
-push int32(42)
-push int32(33)
-; Here the stack contains two elements
+		   ;; dfdsgd
+push int32(42) 					; aaaaahhhh
+	push int32(33)
+  ; Here the stack contains two elements
 
 add
 ; The two operands on the stack are added then poped

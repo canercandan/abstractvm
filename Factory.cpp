@@ -5,12 +5,14 @@
 // Login   <candan_c@epitech.net>
 // 
 // Started on  Sat May 31 14:25:37 2008 caner candan
-// Last update Sat May 31 22:06:29 2008 caner candan
+// Last update Sun Jun  1 11:06:32 2008 caner candan
 //
 
 #include <string>
 #include <sstream>
 #include <iostream>
+#include <cstdlib>
+#include <cctype>
 #include "Factory.h"
 #include "Number.h"
 #include "IObject.h"
@@ -59,6 +61,14 @@ IObject	*Factory::makeDouble(const std::string& s)
   return (new Number<double>(val));
 }
 
+void		Factory::toLowerCase(std::string& s)
+{
+  size_t	i;
+
+  for (i = 0; i < s.length(); ++i)
+    s[i] = std::tolower(s[i]);
+}
+
 IObject	*Factory::makeNumber(const std::string& s)
 {
   std::string	type(s.substr(0, s.find_first_of('(')));
@@ -66,6 +76,7 @@ IObject	*Factory::makeNumber(const std::string& s)
 
   try
     {
+      toLowerCase(type);
       for (i = 0; method[i].func; i++)
 	if (method[i].type == type)
 	  return (method[i].func(s));

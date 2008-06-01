@@ -5,7 +5,7 @@
 // Login   <candan_c@epitech.net>
 // 
 // Started on  Sat May 31 14:23:22 2008 caner candan
-// Last update Sat May 31 21:58:23 2008 caner candan
+// Last update Sun Jun  1 11:06:07 2008 caner candan
 //
 
 #ifndef __FACTORY_H__
@@ -32,6 +32,7 @@ public:
   static IObject	*makeInt32(const std::string& s);
   static IObject	*makeFloat(const std::string& s);
   static IObject	*makeDouble(const std::string& s);
+  static void		toLowerCase(std::string& s);
   static IObject	*makeNumber(const std::string& s);
 };
 
