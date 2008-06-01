@@ -5,7 +5,7 @@
 // Login   <candan_c@epitech.net>
 // 
 // Started on  Sat May 31 15:35:37 2008 caner candan
-// Last update Sun Jun  1 14:20:56 2008 caner candan
+// Last update Sun Jun  1 14:44:34 2008 caner candan
 //
 
 #include <fstream>
@@ -44,7 +44,10 @@ VM::~VM()
 VM&	VM::operator=(const VM& v)
 {
   if (this != &v)
-    {}
+    {
+      this->_fileStack = v._fileStack;
+      this->_vmStack = v._vmStack;
+    }
   return (*this);
 }
 
@@ -129,6 +132,8 @@ void	VM::actPop(myListStack::const_iterator&,
 		   myListStack::const_iterator&,
 		   VMStack& stack)
 {
+  if (!stack.size())
+    return;
   stack.pop_back();
 }
 
@@ -140,9 +145,11 @@ void		VM::actAdd(myListStack::const_iterator&,
   IOperand	*op2;
   IObject	*res;
 
-  op1 = static_cast<IOperand*>(stack.back());
-  stack.pop_back();
+  if (stack.size() < 2)
+    return;
   op2 = static_cast<IOperand*>(stack.back());
+  stack.pop_back();
+  op1 = static_cast<IOperand*>(stack.back());
   stack.pop_back();
   res = op1->Add(*op2);
   stack.push_back(res);
@@ -160,9 +167,11 @@ void		VM::actSub(myListStack::const_iterator&,
   IOperand	*op2;
   IObject	*res;
 
-  op1 = static_cast<IOperand*>(stack.back());
-  stack.pop_back();
+  if (stack.size() < 2)
+    return;
   op2 = static_cast<IOperand*>(stack.back());
+  stack.pop_back();
+  op1 = static_cast<IOperand*>(stack.back());
   stack.pop_back();
   res = op1->Substract(*op2);
   stack.push_back(res);
@@ -180,9 +189,11 @@ void		VM::actMul(myListStack::const_iterator&,
   IOperand	*op2;
   IObject	*res;
 
-  op1 = static_cast<IOperand*>(stack.back());
-  stack.pop_back();
+  if (stack.size() < 2)
+    return;
   op2 = static_cast<IOperand*>(stack.back());
+  stack.pop_back();
+  op1 = static_cast<IOperand*>(stack.back());
   stack.pop_back();
   res = op1->Multiply(*op2);
   stack.push_back(res);
@@ -200,14 +211,16 @@ void		VM::actDiv(myListStack::const_iterator&,
   IOperand	*op2;
   IObject	*res;
 
-  op1 = static_cast<IOperand*>(stack.back());
-  stack.pop_back();
+  if (stack.size() < 2)
+    return;
   op2 = static_cast<IOperand*>(stack.back());
+  stack.pop_back();
+  op1 = static_cast<IOperand*>(stack.back());
   stack.pop_back();
   res = op1->Divide(*op2);
   stack.push_back(res);
   std::cout << "[div] "
-	    << op1->ToString() << " - "
+	    << op1->ToString() << " / "
 	    << op2->ToString() << " = "
 	    << res->ToString() << std::endl;
 }
@@ -235,6 +248,8 @@ void		VM::actAssert(myListStack::const_iterator& it,
 {
   IObject	*op;
 
+  if (stack.size() < 1)
+    return;
   std::cout << "[assert] ";
   while (++it != end)
     {
