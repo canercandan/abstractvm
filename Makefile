@@ -42,7 +42,7 @@ WARNINGS	+=	-Woverloaded-virtual
 CFLAGS		+=	$(INCLUDES) $(WARNINGS) $(DEBUG)
 
 CC		=	$(CC_FREEBSD)
-CC_FREEBSD	=	g++43
+CC_FREEBSD	=	g++
 CC_LINUX	=	/usr/bin/g++
 CC_SUNOS	=	/usr/sfw/bin/g++
 
